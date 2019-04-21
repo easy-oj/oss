@@ -35,6 +35,8 @@ func NewOSSHandler() *ossHandler {
 	}
 	var b backend
 	switch u.Scheme {
+	case backends.FileBackendScheme:
+		b, err = backends.NewFileBackend(u)
 	case backends.OSSBackendScheme:
 		b, err = backends.NewOSSBackend(u)
 	default:
